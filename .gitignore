@@ -1,0 +1,30 @@
+# Fichiers auxiliaires LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+*.xdv
+
+# Fichiers de compilation
+*.pdf
+*.dvi
+*.ps
+
+# Dossiers temporaires (selon l'éditeur)
+_auto/
+build/
+output/
+
+# Fichiers d'OS
+.DS_Store
+Thumbs.db
