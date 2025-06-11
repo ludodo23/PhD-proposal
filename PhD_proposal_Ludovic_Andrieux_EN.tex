@@ -5,9 +5,28 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{csquotes}
-\usepackage{hyperref}
+\usepackage[colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue]{hyperref}
+\usepackage[acronym]{glossaries}
 \usepackage[most]{tcolorbox}
 \usepackage{tabularx}
+
+\makeglossaries
+
+\newacronym{cfd}{CFD}{Computational Fluid Dynamics}
+\newacronym{edp}{PDE}{Partial Differential Equation}
+\newacronym{gnc}{GNC}{Guidance, Navigation and Control}
+\newacronym{pinn}{PINN}{Physics-Informed Neural Network}
+\newacronym{pino}{PINO}{Physics-Informed Neural Operator}
+\newacronym{piml}{PIML}{Physics-Informed Machine Learning}
+\newacronym{ml}{ML}{Machine Learning}
+\newacronym{ffnn}{FFNN}{Feedforward Neural Network}
+\newacronym{no}{NO}{Neural Operator}
+\newacronym{ecss}{ECSS}{European Cooperation for Space Standardization}
+\newacronym{smp}{SMP}{Simulation Model Portability}
+\newacronym{esa}{ESA}{European Space Agency}
+\newacronym{cnes}{CNES}{Centre National d'Études Spatiales}
+\newacronym{inria}{INRIA}{Institut National de Recherche en Informatique et en Automatique}
+\newacronym{onera}{ONERA}{Office National d'Études et de Recherches Aérospatiales}
 
 \AfterPreamble{\hypersetup{
 		pdfauthor={Ludovic Andrieux},
@@ -33,56 +52,56 @@ bibstyle=numeric,  % bibliography style alphabetic
 	\maketitle
 	
 	\begin{tcolorbox}[colback=gray!0, colframe=black, sharp corners, boxrule=0.5pt]
-		Multi-fidelity modeling of propellant sloshing in space launcher tanks through the hybridization of analytical models, CFD, and physics-informed neural networks.
+		Multi-fidelity modeling of propellant sloshing in space launcher tanks through the hybridization of analytical models, \acrshort{cfd}, and physics-informed neural networks.
 	\end{tcolorbox}
 	
 	\section*{Keywords}
 	
-	Propellant sloshing, space tanks, CFD, pendulum models, PINN, GNC simulation, ECSS/SMP
+	Propellant sloshing, space tanks, \acrshort{cfd}, pendulum models, \acrshort{pinn}, \acrshort{gnc} simulation, \acrshort{ecss}/\acrshort{smp}
 	
 	\section*{Desired Profile and Skills}
 	
 	\begin{itemize}
 		\item Engineering degree or Master's degree in aerospace or applied data science.
 		
-		\item Skills in fluid mechanics, numerical simulation (CFD), reduced-order modeling methods (mass-spring model, pendulum).
+		\item Skills in fluid mechanics, numerical simulation (\acrshort{cfd}), reduced-order modeling methods (mass-spring model, pendulum).
 		
-		\item Interest or experience in physics-informed machine learning (PINN, PIML).
+		\item Interest or experience in physics-informed machine learning (\acrshort{pinn}, \acrshort{piml}).
 		
-		\item Proficiency in C++ and/or Python, familiarity with ECSS/SMP standards is a plus.
+		\item Proficiency in C++ and/or Python, familiarity with \acrshort{ecss}/\acrshort{smp} standards is a plus.
 	\end{itemize}
 	
 	\section*{PhD Project Description}
 	
-	Physics-Informed Neural Networks (\textbf{P}hysics \textbf{I}nformed \textbf{N}eural \textbf{N}etworks or \textbf{PINNs}) represent a new paradigm in deep learning, capable of solving both direct and inverse problems for nonlinear partial differential equations (PDEs) \cite{raissiPhysicsinformedNeuralNetworks2019}. By integrating underlying physical constraints into the architecture of a feedforward neural network, PINNs can be trained as surrogate models with little to no labeled data for inferring solutions to PDEs \cite{cuomoScientificMachineLearning2022}. In the current literature, the implementation of PINNs is seen both as a complement and a potential alternative to existing numerical techniques, across a wide range of research fields in science and engineering \cite{maoPhysicsinformedNeuralNetworks2020, buosoPersonalisingLeftventricularBiophysical2021, caiPhysicsInformedNeuralNetworks2021}.
+	\gls{pinn}s represent a new paradigm in deep learning, capable of solving both direct and inverse problems for nonlinear \gls{edp}s \cite{raissiPhysicsinformedNeuralNetworks2019}. By integrating underlying physical constraints into the architecture of a \gls{ffnn}, \gls{pinn}s can be trained as surrogate models with little to no labeled data for inferring solutions to \gls{edp}s \cite{cuomoScientificMachineLearning2022}. In the current literature, the implementation of \gls{pinn} is seen both as a complement and a potential alternative to existing numerical techniques, across a wide range of research fields in science and engineering \cite{maoPhysicsinformedNeuralNetworks2020, buosoPersonalisingLeftventricularBiophysical2021, caiPhysicsInformedNeuralNetworks2021}.
 	
 	\subsection*{Context}
 	
-	The behavior of propellants in space launcher tanks directly impacts flight stability, the performance of flight control algorithms, and mission success. During powered phases, the dynamic effects of sloshing masses can be efficiently modeled using equivalent pendulum models (see for example \cite{ibrahimLiquidSloshingDynamics2005a}), but these models become limited when the acceleration regime becomes too weak (and even non-functional in microgravity), the sloshing motion too large, or when dominant biphasic behavior occurs.
+	The behavior of propellants in space launcher tanks directly impacts flight stability, the performance of flight control algorithms, and mission success. During propelled phases, the dynamic effects of sloshing masses can be efficiently modeled using equivalent pendulum models (see for example \cite{ibrahimLiquidSloshingDynamics2005a}), but these models become limited when the acceleration regime becomes too weak (and even non-functional in micro-gravity), the sloshing motion too large, or when dominant biphasic behavior occurs.
 	
 	\subsection*{Problem}
 	
 	In a numerical simulation context, especially for flight control validation and qualification, it is essential to have models that are both accurate, fast, and adaptable, capable of representing physical phenomena at different scales and under various flight conditions.
-	The current approaches struggle to provide a generic, fast, and reliable framework for modeling propellant sloshing during all flight phases. CFD provides accurate but costly results, reduced models (pendulums, mass-spring) are effective during powered phases with relatively small sloshing angles, while physics-informed neural networks (PINN) offer a promising trade-off between accuracy and cost.
+	The current approaches struggle to provide a generic, fast, and reliable framework for modeling propellant sloshing during all flight phases. \acrshort{cfd} provides accurate but costly results, reduced models (pendulums, mass-spring) are effective during powered phases with relatively small sloshing angles, while \gls{pinn} offer a promising trade-off between accuracy and cost.
 	
 	\subsection*{Objectives}
 	
-	This thesis aims to develop a generic framework for modeling propellant behavior in tanks, integrating multiple fidelity levels, and usable in standard industrial environments (fully numerical simulation or with physical elements), with a focus on cases where reduced models are unavailable (microgravity and launcher dynamics during powered phases outside pendulum model applicability).
+	This thesis aims to develop a generic framework for modeling propellant behavior in tanks, integrating multiple fidelity levels, and usable in standard industrial environments (fully numerical simulation or with physical elements), with a focus on cases where reduced models are unavailable (micro-gravity and launcher dynamics during powered phases outside pendulum model applicability).
 	
 	The main objectives are:
 	\begin{enumerate}
 		\item Develop a modular C++ software architecture:
 		\begin{itemize}
 			\item Pendulum and mass-spring models,
-			\item CFD coupling for reference calculations,
-			\item Integration of PINN/PIML models for fast inference,
-			\item Interoperability with ECSS/SMP standards.
+			\item \acrshort{cfd} models (based on the \acrshort{cfd} codes used for the construction of the dataset),
+			\item Integration of \gls{pinn}/\acrshort{piml} models,
+			\item Interoperability with \acrshort{ecss}/\acrshort{smp} standards.
 		\end{itemize}
 		\item Explore, compare, and synthesize sloshing modeling methods:
 		\begin{itemize}
 			\item Analytical approach (small angles, linear, pendulum),
-			\item Numerical CFD simulation (compressible gas and liquid with free surface, evaporation and thermal transport, extraction of wall forces),
-			\item Physics-Informed Neural Networks (PINN) and Neural Operator (NO and PINO).
+			\item Numerical \acrshort{cfd} simulation (compressible gas and liquid with free surface, evaporation and thermal transport, extraction of wall forces),
+			\item \acrfull{pinn}, \acrfull{no} and \acrfull{pino}.
 		\end{itemize}
 		\item Propose a model selection strategy based on:
 		\begin{itemize}
@@ -96,16 +115,16 @@ bibstyle=numeric,  % bibliography style alphabetic
 	
 	The thesis will rely on a structured approach divided into three main components:
 	\begin{enumerate}
-		\item Physical and numerical modeling of the fluid mechanics problem, with the aim of defining test cases (constant accelerations, transients, microgravity) and implementing them to, on one hand, characterize analytical models (pendulum and/or mass-spring), and on the other hand, generate the dataset for neural network models.
+		\item Physical and numerical modeling of the fluid mechanics problem, with the aim of defining test cases (constant accelerations, transients, micro-gravity) and implementing them to, on one hand, characterize analytical models (pendulum and/or mass-spring), and on the other hand, generate the datasets for neural network models.
 		
-		An incremental approach may be envisionned in order to gradualy refine the model with a growing complexity of phenomena to implement:
+		An incremental approach may be envisioned in order to gradually refine the model with a growing complexity of phenomena to implement:
 		\begin{itemize}
 			\item incompressible gas-liquid system with a free surface,
-			\item incorporation of gas compressibility and source terms,
-			\item incorporation of therma transport and phase change.
+			\item gas compressibility and source terms,
+			\item thermal transport and phase change.
 		\end{itemize}
 		
-		\item Development of full (CFD), reduced (pendulum), surrogate (PINN or PIML), and hybrid models according to ECSS/SMP standards for integration into an industrial environment that ensures good portability across various simulation environments.
+		\item Development of full (\acrshort{cfd}), reduced (pendulum), surrogate (\acrshort{pinn} or \acrshort{piml}), and hybrid models according to \acrshort{ecss}/\acrshort{smp} standards for integration into an industrial environment that ensures good portability across various simulation environments.
 		
 		\item Performance evaluation on the trade-off between accuracy and speed through integration of models into a closed-loop digital simulator and development of recommendations for model selection based on usage.
 	\end{enumerate}
@@ -122,9 +141,9 @@ bibstyle=numeric,  % bibliography style alphabetic
 			
 			\hline
 			
-			Semester 1 & Literature review, construction of test cases, mathematical formulationof the problem \\
-			Semester 2 & CFD simulations, data extraction, initial PINN prototypes \\
-			Semester 3 & Development of the modular library, integration of PINN and pendulum models \\
+			Semester 1 & Literature review, construction of test cases, mathematical formulation of the problem \\
+			Semester 2 & \acrshort{cfd} simulations, data extraction, initial \acrshort{pinn} prototypes \\
+			Semester 3 & Development of the modular library, integration of \acrshort{pinn} and pendulum models \\
 			Semester 4 & Evaluation, benchmarks, model selection strategy \\
 			Semester 5 & Integration into simulators \\
 			Semester 6 & Finalization, defense, software submission if applicable \\
@@ -137,17 +156,17 @@ bibstyle=numeric,  % bibliography style alphabetic
 	
 	\section*{Scientific and Industrial Contributions}
 	
-	The thesis is expected to provide a generic and hierarchical framework for modeling propellant sloshing in space launcher tanks, integrated into an industrial simulation environment. The goal is to have fast and realistic tools for simulation needs related to system studies.
+	Accurate and fast evaluation tools for the modeling of propellants in launch vehicle tanks are expected.
 	
-	Moreover, a better understanding of the limits and synergies between analytical models, CFD, and ML is anticipated through this synthetic approach.
+	In addition, this synthetic approach is expected to provide deeper insights into the limitations and complementarities of analytical models, \acrshort{cfd}, and \acrlong{ml}.
 	
 	Specifically, a direct contribution is expected regarding the modeling of the physical phenomenon:
 	\begin{itemize}
-		\item A reduced model for sloshing in microgravity: where the state of the art does not provide anything usable in an environment coupled with GNC algorithms, unlike phases under acceleration.
+		\item A reduced model for sloshing in micro-gravity: where the state of the art does not provide anything usable in an environment coupled with \acrshort{gnc} algorithms, unlike phases under acceleration.
 		\item Initialization of pendulum models after an orbital phase: where the current state of knowledge forces us to randomly generate the initial state. The goal is to reduce such conservatism.
 		\item Implementation of models during the flip maneuver of reusable launchers: where the dynamics of the launcher may impact sloshing behavior, moving beyond the applicability domain of pendulum models.
 	\end{itemize}
-	As well as a valuable direct contribution to the development of a launcher project, with the ability to simulate complete cases typically simulated via CFD coupling later in the project.
+	A direct contribution to the development of a launcher project, with the ability to simulate complete cases typically simulated via \acrshort{cfd} coupling later in the project.
 	
 	Finally, through integration into an industrial environment, we expect significant operational gains.
 	
@@ -157,10 +176,12 @@ bibstyle=numeric,  % bibliography style alphabetic
 	
 	\section*{Envisioned Collaborations}
 	
-	ESA, CNES, INRIA, ONERA
+	\acrshort{esa}, \acrshort{cnes}, \acrshort{inria}, \acrshort{onera}
 	
 	\section*{Host Laboratory}
 	
 	TBD
+	
+	\printglossaries
 	
 \end{document}

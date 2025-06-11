@@ -15,6 +15,25 @@
 *.vrb
 *.xdv
 
+# Bibliographie (biber)
+*.bcf
+*.run.xml
+
+# Indexation (makeindex)
+*.idx
+*.ilg
+*.ind
+
+# Glossaries and acronym build files
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.ist
+
 # Fichiers de compilation
 *.pdf
 *.dvi

@@ -5,9 +5,30 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{csquotes}
-\usepackage{hyperref}
+\usepackage[colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue]{hyperref}
+\usepackage[acronym]{glossaries}
 \usepackage[most]{tcolorbox}
 \usepackage{tabularx}
+
+\makeglossaries
+
+\newacronym{cfd}{CFD}{Computational Fluid Dynamics}
+\newacronym{edp}{EDP}{Equation aux Dérivées Partielles}
+\newacronym{gnc}{GNC}{Guidance, Navigation and Control}
+\newacronym{pinn}{PINN}{Physics-Informed Neural Network}
+\newacronym{pino}{PINO}{Physics-Informed Neural Operator}
+\newacronym{piml}{PIML}{Physics-Informed Machine Learning}
+\newacronym{ml}{ML}{Machine Learning}
+\newacronym{ffnn}{FFNN}{Feedforward Neural Network}
+\newacronym{no}{NO}{Neural Operator}
+\newacronym{ecss}{ECSS}{European Cooperation for Space Standardization}
+\newacronym{smp}{SMP}{Simulation Model Portability}
+\newacronym{esa}{ESA}{European Space Agency}
+\newacronym{cnes}{CNES}{Centre National d'Études Spatiales}
+\newacronym{inria}{INRIA}{Institut National de Recherche en Informatique et en Automatique}
+\newacronym{onera}{ONERA}{Office National d'Études et de Recherches Aérospatiales}
+
+
 
 \AfterPreamble{\hypersetup{
 		pdfauthor={Ludovic Andrieux},
@@ -35,64 +56,64 @@ bibstyle=numeric,  % style de bibliographie alphabétique
 	\maketitle
 	
 	\begin{tcolorbox}[colback=gray!0, colframe=black, sharp corners, boxrule=0.5pt]
-	Modélisation multi-fidélité des ballottements d’ergols dans les réservoirs de lanceurs spatiaux par hybridation de modèles analytiques, CFD et réseaux de neurones informés par la physique.
+	Modélisation multi-fidélité des ballottements d’ergols dans les réservoirs de lanceurs spatiaux par hybridation de modèles analytiques, \acrshort{cfd} et réseaux de neurones informés par la physique.
 	\end{tcolorbox}
 	
 	\section*{Mots-clés}
 	
-	Ballottements d'ergols, réservoirs spatiaux, CFD, modèles pendulaires, PINN, simulation GNC, ECSS/SMP
+	Ballottements d'ergols, réservoirs spatiaux, \acrshort{cfd}, modèles pendulaires, \acrshort{pinn}, simulation \acrshort{gnc}, \acrshort{ecss}/\acrshort{smp}
 	
 	\section*{Profil et compétences recherchées}
 	
 	\begin{itemize}
 		\item Diplôme d’ingénieur ou Master 2 en aérospatial ou data science appliquée.
 		
-		\item Compétences en mécanique des fluides, simulation numérique (CFD), méthodes de modélisation réduite (modèle masse-ressort, pendule)
+		\item Compétences en mécanique des fluides, simulation numérique (\acrshort{cfd}), méthodes de modélisation réduite (modèle masse-ressort, pendule).
 		
-		\item Intérêt ou expérience en machine learning physique (PINN, PIML)
+		\item Intérêt ou expérience en machine learning physique (\acrshort{pinn}, \acrshort{piml}).
 		
-		\item Maîtrise du langage C++ et/ou Python, familiarité avec les standards ECSS/SMP appréciée.
+		\item Maîtrise du langage C++ et/ou Python, familiarité avec les standards \acrshort{ecss}/\acrshort{smp} appréciée.
 	\end{itemize}
 	
 	
 	\section*{Présentation du projet doctoral}
 	
-	Les réseaux de neurones informés par la physique (\textbf{P}hysics \textbf{I}nformed \textbf{N}eural \textbf{N}etworks ou \textbf{PINNs}) constituent un nouveau paradigme de l’apprentissage profond, capable de résoudre à la fois des problèmes directs et inverses pour des équations aux dérivées partielles (EDP) non linéaires \cite{raissiPhysicsinformedNeuralNetworks2019}. En intégrant des contraintes physiques sous-jacentes dans l’architecture d’un réseau de neurones à propagation avant, les PINNs peuvent être entraînés comme modèle de substitution avec peu ou pas de données étiquetées pour l’inférence de solutions d’EDP \cite{cuomoScientificMachineLearning2022}. Dans la littérature actuelle, l’implémentation des PINNs est envisagée à la fois comme complément et comme alternative potentielle aux techniques numériques existantes, dans un large éventail de domaines de recherche en sciences et en ingénierie \cite{maoPhysicsinformedNeuralNetworks2020,buosoPersonalisingLeftventricularBiophysical2021, caiPhysicsInformedNeuralNetworks2021}.
+	Les réseaux de neurones informés par la physique, ou \gls{pinn} constituent un nouveau paradigme de l’apprentissage profond, capable de résoudre à la fois des problèmes directs et inverses pour des \gls{edp} non linéaires \cite{raissiPhysicsinformedNeuralNetworks2019}. En intégrant des contraintes physiques sous-jacentes dans l’architecture d’un réseau de neurones à propagation avant, ou \gls{ffnn}, les \gls{pinn}s peuvent être entraînés comme modèle de substitution avec peu ou pas de données étiquetées pour l’inférence de solutions d’\gls{edp} \cite{cuomoScientificMachineLearning2022}. Dans la littérature actuelle, l’implémentation des \gls{pinn}s est envisagée à la fois comme complément et comme alternative potentielle aux techniques numériques existantes, dans un large éventail de domaines de recherche en sciences et en ingénierie \cite{maoPhysicsinformedNeuralNetworks2020,buosoPersonalisingLeftventricularBiophysical2021, caiPhysicsInformedNeuralNetworks2021}.
 	
 	\subsection*{Contexte}
 	
 	
-	Le comportement des ergols dans les réservoirs de lanceurs spatiaux a un impact direct sur la stabilité du vol, la performance des algorithmes de contrôle de vol, et la réussite de la mission. Lors des phases propulsées, les effets dynamiques des masses ballottantes peuvent être modélisés efficacement via des pendules équivalents (voir par exemple \cite{ibrahimLiquidSloshingDynamics2005a}), mais ces modèles deviennent limités dès que le régime d’accélération devient trop faible (et même inopérant en micro-gravité), le mouvement des masses ballottantes trop important, ou encore le comportement diphasique dominant.
+	Le comportement des ergols dans les réservoirs de lanceurs spatiaux a un impact direct sur la stabilité du vol, la performance des algorithmes de contrôle de vol, et la réussite de la mission. Lors des phases propulsées, les effets dynamiques des masses ballottantes peuvent être modélisés efficacement à l'aide de pendules équivalents (voir par exemple \cite{ibrahimLiquidSloshingDynamics2005a}), mais ces modèles deviennent limités dès que le régime d’accélération devient trop faible (et même inopérant en micro-gravité), le mouvement des masses ballottantes trop important, ou encore le comportement diphasique dominant.
 	
 	\subsection*{Problématique}
 	
 	Dans un contexte de simulation numérique, notamment dans un cadre de validation et de qualification du contrôle de vol, il est essentiel de disposer de modèles à la fois précis, rapides et adaptables, capables de représenter les phénomènes physiques à différentes échelles et dans différents contextes de vol.
-	Les approches actuelles peinent à fournir un cadre générique, rapide et fiable pour modéliser les ballottements d’ergols dans toutes les phases de vol. La CFD offre des résultats précis mais coûteux, les modèles réduits (typiquement les modèles de pendules) sont efficaces lors des phases propulsées mais sous des conditions d'angles de ballottements relativement faibles, tandis que les réseaux de neurones informés par la physique (PINN) offrent un compromis prometteur entre précision et coût.
+	Les approches actuelles peinent à fournir un cadre générique, rapide et fiable pour modéliser les ballottements d’ergols dans toutes les phases de vol. La \acrshort{cfd} offre des résultats précis mais coûteux, les modèles réduits (typiquement les modèles de pendules) sont efficaces lors des phases propulsées mais sous des conditions d'angles de ballottements relativement faibles, tandis que les réseaux de neurones informés par la physique (\gls{pinn}) offrent un compromis prometteur entre précision et coût.
 	
 	\subsection*{Objectifs}
 	
-	Cette thèse vise à développer un cadre générique de modélisation du comportement des ergols en réservoir, intégrant plusieurs niveaux de fidélité et exploitable dans des environnements industriels standards (simulation tout numérique ou avec éléments réels), en mettant l'accent sur les cas pour lesquels des modélisations réduites ne sont pas disponible (micro-gravité et en phase propulsée hors représentativité des modèles pendulaires).
+	Cette thèse vise à développer un cadre générique de modélisation du comportement des ergols dans les réservoirs, intégrant plusieurs niveaux de fidélité, et exploitable dans des environnements industriels standards (simulation tout numérique ou avec éléments réels), en mettant l'accent sur les cas pour lesquels des modélisations réduites ne sont pas disponibles (micro-gravité et en phase propulsée hors représentativité des modèles pendulaires).
 	
 	Les objectifs principaux sont :
 	\begin{enumerate}
 		\item Développer une architecture logicielle C++ modulaire :
 		\begin{itemize}
 			\item Modèles pendulaires et masse-ressorts,
-			\item Couplage CFD pour calculs de référence,
-			\item Intégration de modèles PINN/PIML pour inférence rapide
-			\item Interopérabilité avec les standards ECSS/SMP
+			\item Modèles \acrshort{cfd} (sur la base des codes \acrshort{cfd} utilisés pour la constitution du jeu de données),
+			\item Intégration de modèles \gls{pinn}/\acrshort{piml},
+			\item Interopérabilité avec les standards \acrshort{ecss}/\acrshort{smp}.
 		\end{itemize}
 		\item Explorer, comparer et synthétiser les méthodes de modélisation des ballottements :
 		\begin{itemize}
 			\item Approche analytique (petits angles, linéaires, pendules),
-			\item Simulation numérique CFD (gaz compressible et liquide avec interface libre, évaporation et transfert thermique, extraction d'efforts sur les parois),
-			\item Réseaux de neurones informés par la physique (PINN) et opérateurs neuronaux (NO et PINO).
+			\item Simulation numérique \acrshort{cfd} (gaz compressible et liquide avec interface libre, évaporation et transfert thermique, extraction d'efforts sur les parois),
+			\item Réseaux de neurones informés par la physique (\gls{pinn}) et opérateurs neuronaux (\acrshort{no}et \acrshort{pino}).
 		\end{itemize}
 		\item Proposer une stratégie de sélection de modèle selon :
 		\begin{itemize}
 			\item Le niveau de fidélité requis,
-			\item Les contraintes de simulation
-			\item La phase de vol et l'environnement
+			\item Les contraintes de simulation,
+			\item La phase de vol et l'environnement.
 		\end{itemize}
 	\end{enumerate}
 	
@@ -101,18 +122,18 @@ bibstyle=numeric,  % style de bibliographie alphabétique
 	
 	La thèse s’appuiera sur un approche structurée en trois volets :
 	\begin{enumerate}
-		\item La modélisation physique et numérique du problème de mécanique des fluides, dans le but de définir des cas tests (accélérations constantes, transitoires, micro-gravité) et les mettre en œuvre pour, d'une part, la caractérisation des modèles analytiques (pendulaires et/ou masses-ressorts), et, d'autre part,  la constitution du jeu de données pour les modèles neuronaux.
+		\item La modélisation physique et numérique du problème de mécanique des fluides, dans le but de définir des cas tests (accélérations constantes, transitoires, micro-gravité) et les mettre en œuvre pour, d'une part, caractériser les modèles analytiques (pendulaires et/ou masses-ressorts), et, d'autre part, constituer le jeu de données pour les modèles neuronaux.
 		
 		Une approche incrémentale est envisageable pour enrichir la modélisation au fur et à mesure d'une monté en complexité des phénomènes à prendre en compte lors de l'implémentation :
 		\begin{itemize}
-			\item gaz et liquide incompressibles et interface libre,
-			\item prise en compte de la compressibilité du gaz et de termes de sources (représsurisation et écoulement sortant),
+			\item système gaz-liquide incompressible et interface libre,
+			\item compressibilité du gaz et représentativité des sources (représsurisation et écoulement sortant),
 			\item transfert thermique et changement de phase.
 		\end{itemize}
 		
-		\item Le développement de modèles complets (CFD), réduits (pendule), de substitution (PINN ou PIML), et hybrides selon les standards ECSS/SMP pour une intégration dans un environnement industriel qui assurent une bonne portabilité dans différents environnements de simulation.
+		\item Le développement de modèles complets (\acrshort{cfd}), réduits (pendule), de substitution (\gls{pinn} ou \acrshort{piml}), et hybrides selon les standards \acrshort{ecss}/\acrshort{smp} pour une intégration dans un environnement industriel qui assurent une bonne portabilité dans différents environnements de simulation.
 		
-		\item L'évaluation des performances sur le compromis précision / rapidité via intégration des modèles dans un simulateur numérique boucle fermé et établissement de recommandations pour le choix de modèle selon l'usage.	
+		\item L'évaluation des performances sur le compromis précision / rapidité à l'aide d'intégration des modèles dans un simulateur numérique boucle fermée et établissement de recommandations pour le choix de modèle selon l'usage.	
 		
 	\end{enumerate}
 	
@@ -129,8 +150,8 @@ bibstyle=numeric,  % style de bibliographie alphabétique
 			\hline
 			
 			Semestre 1 & Revue bibliographique, construction des cas tests et formulation mathématique du problème \\
-			Semestre 2 & Simulations CFD, extraction de données, premiers prototypes PINN \\
-			Semestre 3 & Développement de la librairie modulaire, intégration PINN, pendules et CFD \\
+			Semestre 2 & Simulations \acrshort{cfd}, extraction de données, premiers prototypes \acrshort{pinn} \\
+			Semestre 3 & Développement de la librairie modulaire, intégration \acrshort{pinn}, pendules et \acrshort{cfd} \\
 			Semestre 4 & Évaluation, benchmarks, stratégie de sélection de modèle \\
 			Semestre 5 & Intégration dans simulateurs, benchmarks \\
 			Semestre 6 & Finalisation, soutenance, dépôt logiciel si applicable \\
@@ -143,19 +164,19 @@ bibstyle=numeric,  % style de bibliographie alphabétique
 	
 	\section*{Apports scientifiques et industriels}
 	
-	Un cadre générique et hiérarchisé de modélisation des ballottements d'ergols dans les réservoirs de lanceur spatiaux, intégré dans un environnement de simulation industriel est attendu. Ce cadre devrait apporter outils rapides et réalistes pour les besoins de simulation, liés au études systèmes.
+	Des outils d'évaluation à la fois rapides et réalistes de modélisation d'ergols dans les réservoirs de lanceurs spatiaux sont attendus.
 	
-	Par ailleurs, une meilleure compréhension des limites et synergies entre modèles analytique, CFD et ML est attendu au travers de cette approche qui se veut synthétique.
+	Cette approche synthétique a pour objectif de mieux cerner les domaines de validité, les interactions et les complémentarités entre modèles analytiques, simulations \acrshort{cfd} et techniques de \acrlong{ml}
 	
 	Plus spécifiquement, un apport direct est attendu en ce qui concerne la modélisation du phénomène physique. Typiquement :
 	\begin{itemize}
-		\item Une modélisation réduite des ballottements en micro-gravité : où l'état de l'art ne fournit pas de modèle réduit qui soit utilisable dans un environnement couplé avec des algorithmes GNC, contrairement aux phases sous accélération.
+		\item Une modélisation réduite des ballottements en micro-gravité : où l'état de l'art ne fournit pas de modèle réduit qui soit utilisable dans un environnement couplé avec des algorithmes \acrshort{gnc}, contrairement aux phases sous accélération.
 		\item L'initialisation des modèles pendulaires après une phase orbitale : où l'état actuel des connaissances nous pousse à tirer aléatoirement cet état initial. On cherche alors à réduire ces conservatismes.
 		\item La mise en œuvre de modèles lors des phases de retournement des lanceurs réutilisables : où la dynamique du lanceur peut avoir un impact sur celle des ballottements qui fait sortir du domaine d'applicabilité des modèles pendulaires.
 	\end{itemize}
-	Un apport direct appréciable sur le déroulement d'un projet de développement de lanceur est aussi attendu, avec la capacité de simuler via des modèles ML des cas complets qui sont généralement simulés via couplage CFD tard dans le déroulement du projet.
+	Un apport direct sur le déroulement d'un projet de développement de lanceur est aussi attendu, avec la capacité de simuler à l'aide de modèles \acrshort{ml} des cas complets qui sont généralement simulés par couplage \acrshort{cfd} tard dans le déroulement du projet.
 	
-	Enfin, via l'intégration dans un environnement industriel, on estime que le gain opérationnel sera non négligeable.
+	Enfin, au travers de l'intégration dans un environnement industriel, on estime que le gain opérationnel sera non négligeable.
 	
 	\nocite{*}
 	
@@ -163,10 +184,12 @@ bibstyle=numeric,  % style de bibliographie alphabétique
 	
 	\section*{Collaborations envisagées}
 	
-	ESA, CNES, INRIA, ONERA
+	\acrshort{esa}, \acrshort{cnes}, \acrshort{inria}, \acrshort{onera}
 	
 	\section*{Laboratoire d'accueil}
 	
 	TBD
+	
+	\printglossaries
 	
 \end{document}
