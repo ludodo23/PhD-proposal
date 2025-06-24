@@ -82,7 +82,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 	\subsection*{Problem}
 	
 	In a numerical simulation context, especially for flight control validation and qualification, it is essential to have models that are both accurate, fast, and adaptable, capable of representing physical phenomena at different scales and under various flight conditions.
-	The current approaches struggle to provide a generic, fast, and reliable framework for modeling propellant sloshing during all flight phases. \acrshort{cfd} provides accurate but costly results, reduced models (pendulums, mass-spring) are effective during powered phases with relatively small sloshing angles, while \gls{pinn} offer a promising trade-off between accuracy and cost.
+	The current approaches struggle to provide a generic, fast, and reliable framework for modeling propellant sloshing during all flight phases. \acrshort{cfd} provides accurate but costly results, reduced models (pendulums, mass-spring) are effective during powered phases with relatively small sloshing angles (excluding the flip maneuver of the reusable launch vehicle), while \gls{pinn} offer a promising trade-off between accuracy and cost.
 	
 	\subsection*{Objectives}
 	
@@ -145,7 +145,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 			Semester 2 & \acrshort{cfd} simulations, data extraction, initial \acrshort{pinn} prototypes \\
 			Semester 3 & Development of the modular library, integration of \acrshort{pinn} and pendulum models \\
 			Semester 4 & Evaluation, benchmarks, model selection strategy \\
-			Semester 5 & Integration into simulators \\
+			Semester 5 & Integration into a numerical reference simulator to be defined, end-to-end benchmark \\
 			Semester 6 & Finalization, defense, software submission if applicable \\
 			
 			\hline

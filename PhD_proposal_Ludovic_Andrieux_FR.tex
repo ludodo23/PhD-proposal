@@ -88,7 +88,7 @@ bibstyle=numeric,  % style de bibliographie alphabétique
 	\subsection*{Problématique}
 	
 	Dans un contexte de simulation numérique, notamment dans un cadre de validation et de qualification du contrôle de vol, il est essentiel de disposer de modèles à la fois précis, rapides et adaptables, capables de représenter les phénomènes physiques à différentes échelles et dans différents contextes de vol.
-	Les approches actuelles peinent à fournir un cadre générique, rapide et fiable pour modéliser les ballottements d’ergols dans toutes les phases de vol. La \acrshort{cfd} offre des résultats précis mais coûteux, les modèles réduits (typiquement les modèles de pendules) sont efficaces lors des phases propulsées mais sous des conditions d'angles de ballottements relativement faibles, tandis que les réseaux de neurones informés par la physique (\gls{pinn}) offrent un compromis prometteur entre précision et coût.
+	Les approches actuelles peinent à fournir un cadre générique, rapide et fiable pour modéliser les ballottements d’ergols dans toutes les phases de vol. La \acrshort{cfd} offre des résultats précis mais coûteux, les modèles réduits (typiquement les modèles de pendules) sont efficaces lors des phases propulsées mais sous des conditions d'angles de ballottements relativement faibles (excluant les phases de retournement de lanceur réutilisable), tandis que les réseaux de neurones informés par la physique (\gls{pinn}) offrent un compromis prometteur entre précision et coût.
 	
 	\subsection*{Objectifs}
 	
@@ -107,7 +107,7 @@ bibstyle=numeric,  % style de bibliographie alphabétique
 		\begin{itemize}
 			\item Approche analytique (petits angles, linéaires, pendules),
 			\item Simulation numérique \acrshort{cfd} (gaz compressible et liquide avec interface libre, évaporation et transfert thermique, extraction d'efforts sur les parois),
-			\item Réseaux de neurones informés par la physique (\gls{pinn}) et opérateurs neuronaux (\acrshort{no}et \acrshort{pino}).
+			\item Réseaux de neurones informés par la physique (\gls{pinn}) et opérateurs neuronaux (\acrshort{no} et \acrshort{pino}).
 		\end{itemize}
 		\item Proposer une stratégie de sélection de modèle selon :
 		\begin{itemize}
@@ -153,7 +153,7 @@ bibstyle=numeric,  % style de bibliographie alphabétique
 			Semestre 2 & Simulations \acrshort{cfd}, extraction de données, premiers prototypes \acrshort{pinn} \\
 			Semestre 3 & Développement de la librairie modulaire, intégration \acrshort{pinn}, pendules et \acrshort{cfd} \\
 			Semestre 4 & Évaluation, benchmarks, stratégie de sélection de modèle \\
-			Semestre 5 & Intégration dans simulateurs, benchmarks \\
+			Semestre 5 & Intégration dans simulateur de référence tout numérique à sélectionner, benchmarks sur simulation complète \\
 			Semestre 6 & Finalisation, soutenance, dépôt logiciel si applicable \\
 			
 			\hline
@@ -176,7 +176,7 @@ bibstyle=numeric,  % style de bibliographie alphabétique
 	\end{itemize}
 	Un apport direct sur le déroulement d'un projet de développement de lanceur est aussi attendu, avec la capacité de simuler à l'aide de modèles \acrshort{ml} des cas complets qui sont généralement simulés par couplage \acrshort{cfd} tard dans le déroulement du projet.
 	
-	Enfin, au travers de l'intégration dans un environnement industriel, on estime que le gain opérationnel sera non négligeable.
+	Enfin, au travers de l'intégration dans un environnement industriel, on estime un gain opérationnel conséquent.
 	
 	\nocite{*}
 	
