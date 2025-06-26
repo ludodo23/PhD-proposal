@@ -1,0 +1,44 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usetheme{Madrid}
+\title[Proposition de thèse]{Modélisation multi-fidélité des ballottements d’ergols}
+\subtitle{Hybridation de modèles analytiques, CFD et réseaux de neurones informés par la physique}
+\author{Ludovic Andrieux}
+\date{24 juin 2025}
+
+\begin{document}
+	
+	\frame{\titlepage}
+	
+	\begin{frame}{Objectifs de la thèse}
+		\begin{itemize}
+			\item Développer un cadre générique pour modéliser le comportement des ergols dans les réservoirs spatiaux.
+			\item Intégrer plusieurs niveaux de fidélité :
+			\begin{itemize}
+				\item Modèles analytiques (pendulaires, masse-ressort),
+				\item Simulation CFD (gaz/liquide, interface libre, transfert thermique),
+				\item Réseaux de neurones informés par la physique (PINN, NO, PINO).
+			\end{itemize}
+			\item Assurer la portabilité dans des environnements industriels (interopérabilité ECSS/SMP).
+			\item Évaluer le compromis précision/rapidité pour des cas réalistes (simulateur numérique).
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Approche et retombées}
+		\textbf{Approche structurée en 3 volets :}
+		\begin{enumerate}
+			\item \textbf{Modélisation physique} : cas tests et données pour l’apprentissage.
+			\item \textbf{Développement multi-modèles} : CFD, réduits, PINN, hybrides.
+			\item \textbf{Évaluation des performances} : benchmarks, stratégie de sélection.
+		\end{enumerate}
+		\vspace{0.5cm}
+		\textbf{Apports attendus :}
+		\begin{itemize}
+			\item Meilleure modélisation en micro-gravité et phases de retournement.
+			\item Réduction des conservatismes dans l’initialisation des modèles.
+			\item Gains opérationnels grâce à l’intégration dans des simulateurs industriels.
+		\end{itemize}
+	\end{frame}
+	
+\end{document}
