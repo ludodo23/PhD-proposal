@@ -27,4 +27,6 @@ This document is shared for the sole purpose of **receiving feedback and suggest
 📬 **Contact**
 
 Pour toute question ou retour : ludovic.andrieux23@gmail.com
+
 For any inquiry or feedback: ludovic.andrieux23@gmail.com
+
