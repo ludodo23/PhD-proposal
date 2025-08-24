@@ -52,7 +52,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 	\maketitle
 	
 	\begin{tcolorbox}[colback=gray!0, colframe=black, sharp corners, boxrule=0.5pt]
-		Multi-fidelity modeling of propellant sloshing in space launcher tanks through the hybridization of analytical models, \acrshort{cfd}, and physics-informed neural networks.
+		Modeling of propellant sloshing in space vehicle tanks under micro-gravity or low-g maneuver through physics informed machine learning.
 	\end{tcolorbox}
 	
 	\section*{Keywords}
@@ -86,22 +86,23 @@ bibstyle=numeric,  % bibliography style alphabetic
 	
 	\subsection*{Objectives}
 	
-	This thesis aims to develop a generic framework for modeling propellant behavior in tanks, integrating multiple fidelity levels, and usable in standard industrial environments (fully numerical simulation or with physical elements), with a focus on cases where reduced models are unavailable (micro-gravity and launcher dynamics during powered phases outside pendulum model applicability).
+	This thesis aims to provide reduced models for sloshing in space vehicle tanks in low-g and micro-gravity through \acrshort{piml} since no standard exists.
 	
 	The main objectives are:
 	\begin{enumerate}
 		\item Develop a modular C++ software architecture:
 		\begin{itemize}
-			\item Pendulum and mass-spring models,
-			\item \acrshort{cfd} models (based on the \acrshort{cfd} codes used for the construction of the dataset),
+			\item \acrshort{cfd} models (for dataset generation and end to end closed-loop reference simulation),
 			\item Integration of \gls{pinn}/\acrshort{piml} models,
-			\item Interoperability with \acrshort{ecss}/\acrshort{smp} standards.
+			\item Interoperability with \acrshort{ecss}/\acrshort{smp} standards and pre-existing pendulum and mass-spring models.
 		\end{itemize}
 		\item Explore, compare, and synthesize sloshing modeling methods:
 		\begin{itemize}
 			\item Analytical approach (small angles, linear, pendulum),
 			\item Numerical \acrshort{cfd} simulation (compressible gas and liquid with free surface, evaporation and thermal transport, extraction of wall forces),
 			\item \acrfull{pinn}, \acrfull{no} and \acrfull{pino}.
+			
+			\item Uncertainty and robustness of reduced models.
 		\end{itemize}
 		\item Propose a model selection strategy based on:
 		\begin{itemize}
@@ -115,7 +116,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 	
 	The thesis will rely on a structured approach divided into three main components:
 	\begin{enumerate}
-		\item Physical and numerical modeling of the fluid mechanics problem, with the aim of defining test cases (constant accelerations, transients, micro-gravity) and implementing them to, on one hand, characterize analytical models (pendulum and/or mass-spring), and on the other hand, generate the datasets for neural network models.
+		\item Physical and numerical modeling of the fluid mechanics problem, with the aim of defining test cases (low-g maneuver and micro-gravity) and implementing them to generate the datasets for neural network models.
 		
 		An incremental approach may be envisioned in order to gradually refine the model with a growing complexity of phenomena to implement:
 		\begin{itemize}
@@ -124,9 +125,11 @@ bibstyle=numeric,  % bibliography style alphabetic
 			\item thermal transport and phase change.
 		\end{itemize}
 		
-		\item Development of full (\acrshort{cfd}), reduced (pendulum), surrogate (\acrshort{pinn} or \acrshort{piml}), and hybrid models according to \acrshort{ecss}/\acrshort{smp} standards for integration into an industrial environment that ensures good portability across various simulation environments.
+		Special attention will be given to the preparation of the dataset, as the data-driven approach strongly relies on it.
 		
-		\item Performance evaluation on the trade-off between accuracy and speed through integration of models into a closed-loop digital simulator and development of recommendations for model selection based on usage.
+		\item Development of full (\acrshort{cfd} base on previous modeling),  and surrogate (\acrshort{pinn} or \acrshort{piml}), models according to \acrshort{ecss}/\acrshort{smp} standards for integration into an industrial environment that ensures good portability across various simulation environments.
+		
+		\item Performance evaluation on the trade-off between accuracy (with uncertainty quantification) and speed through integration of models into a closed-loop digital simulator and development of recommendations for model selection based on usage.
 	\end{enumerate}
 	
 	\section*{Proposed Approach}
@@ -143,7 +146,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 			
 			Semester 1 & Literature review, construction of test cases, mathematical formulation of the problem \\
 			Semester 2 & \acrshort{cfd} simulations, data extraction, initial \acrshort{pinn} prototypes \\
-			Semester 3 & Development of the modular library, integration of \acrshort{pinn} and pendulum models \\
+			Semester 3 & Development of the modular library, integration of \acrshort{pinn} and CFD models \\
 			Semester 4 & Evaluation, benchmarks, model selection strategy \\
 			Semester 5 & Integration into a numerical reference simulator to be defined, end-to-end benchmark \\
 			Semester 6 & Finalization, defense, software submission if applicable \\
@@ -169,6 +172,49 @@ bibstyle=numeric,  % bibliography style alphabetic
 	A direct contribution to the development of a launcher project, with the ability to simulate complete cases typically simulated via \acrshort{cfd} coupling later in the project.
 	
 	Finally, through integration into an industrial environment, we expect significant operational gains.
+	
+	\subsection*{Novelty}
+	
+	While PINNs have been successfully applied to terrestrial free-surface flows and generic two-phase fluid benchmarks, no published work addresses propellant tank sloshing in microgravity or low-g launcher maneuvres, including cryogenic compressible two-phase physics and thermal/phase-change effects, with controller-ready surrogates that are SMP/ECSS-compliant.
+	Existing aerospace-related work is either:
+	
+	\begin{itemize}
+		\item Not physics-informed (deep learning only, less explainable, no V\&V robustness)
+		\item Limited to simplified problems (no cryogenics, no spaceflight regimes)
+	\end{itemize}
+	
+	This PhD features a uniquely combination of technique and use case:
+	
+	\begin{itemize}
+		\item Technique: Advances PINN/PINO for nonlinear, multiphase PDEs capturing on-board propellant physics (Compressible gas–liquid interaction, Free-surface dynamics, Thermal transport and phase change, tank geometry and boundary conditions) and differentiability for MPC (??).
+		
+		\item Use case: Space launcher tanks in micro-gravity/flip/transition phases where no analytical or reduced models are currently operational.
+	\end{itemize}
+	
+	\subsection*{Maturity}
+	
+	
+	State of the art: PINNs are at TRL 2–3 in fluid mechanics; proven for simpler PDEs, non-cryogenic two-phase flows, and non-aerospace domains.
+	\\
+	
+	Gap: No application to aerospace tanks with cryogenic thermodynamics, no integration into industrial simulation environments, no control-loop embedding.
+	\\
+		
+	PhD suitability:
+	
+	\begin{itemize}
+		\item CFD and analytical models for dataset generation are available from ESA/CNES/ONERA.
+		
+		\item PINN/PINO toolchains (PyTorch/TensorFlow, JAX, DeepXDE) are mature enough for immediate prototyping.
+		
+		\item SMP/ECSS interface specs are public and can be implemented alongside model development.
+		
+	\end{itemize}	
+	A 3–4 year research arc allows deepening physics complexity (phase change, boil-off), improving surrogate training stability, and performing closed-loop validation.
+	
+	Target TRL after PhD: 4–5 — validated in simulation with representative hardware/software in the loop, ready for extension to flight-representative testbeds.
+	
+	
 	
 	\nocite{*}
 	
