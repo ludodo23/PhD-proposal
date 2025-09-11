@@ -14,10 +14,14 @@
 
 \newacronym{cfd}{CFD}{Computational Fluid Dynamics}
 \newacronym{edp}{PDE}{Partial Differential Equation}
+\newacronym{edps}{PDEs}{Partial Differential Equations}
 \newacronym{gnc}{GNC}{Guidance, Navigation and Control}
 \newacronym{pinn}{PINN}{Physics-Informed Neural Network}
+\newacronym{bpinn}{B-PINN}{Bayesian Physics-Informed Neural Network}
+\newacronym{bnn}{BNN}{Bayesian Neural Network}
 \newacronym{pino}{PINO}{Physics-Informed Neural Operator}
 \newacronym{piml}{PIML}{Physics-Informed Machine Learning}
+\newacronym{sciml}{SciML}{Scientific Machine Learning}
 \newacronym{ml}{ML}{Machine Learning}
 \newacronym{ffnn}{FFNN}{Feedforward Neural Network}
 \newacronym{no}{NO}{Neural Operator}
@@ -27,6 +31,9 @@
 \newacronym{cnes}{CNES}{Centre National d'Études Spatiales}
 \newacronym{inria}{INRIA}{Institut National de Recherche en Informatique et en Automatique}
 \newacronym{onera}{ONERA}{Office National d'Études et de Recherches Aérospatiales}
+\newacronym{mpc}{MPC}{Model Predictive Control}
+\newacronym{trl}{TRL}{Technology Readiness Level}
+\newacronym{uq}{UQ}{Uncertainty Quantification}
 
 \AfterPreamble{\hypersetup{
 		pdfauthor={Ludovic Andrieux},
@@ -43,6 +50,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 ]{biblatex}
 
 \addbibresource{ESA.bib} % Your .bib file name
+\addbibresource{UQ.bib} % Your .bib file name
 
 \title{PhD Proposal}
 \author{Ludovic Andrieux}
@@ -66,14 +74,18 @@ bibstyle=numeric,  % bibliography style alphabetic
 		
 		\item Skills in fluid mechanics, numerical simulation (\acrshort{cfd}), reduced-order modeling methods (mass-spring model, pendulum).
 		
-		\item Interest or experience in physics-informed machine learning (\acrshort{pinn}, \acrshort{piml}).
+		\item Interest or experience in physics-informed machine learning (\acrshort{pinn}, \acrshort{piml} and \acrshort{sciml}).
 		
 		\item Proficiency in C++ and/or Python, familiarity with \acrshort{ecss}/\acrshort{smp} standards is a plus.
 	\end{itemize}
 	
 	\section*{PhD Project Description}
 	
-	\gls{pinn}s represent a new paradigm in deep learning, capable of solving both direct and inverse problems for nonlinear \gls{edp}s \cite{raissiPhysicsinformedNeuralNetworks2019}. By integrating underlying physical constraints into the architecture of a \gls{ffnn}, \gls{pinn}s can be trained as surrogate models with little to no labeled data for inferring solutions to \gls{edp}s \cite{cuomoScientificMachineLearning2022}. In the current literature, the implementation of \gls{pinn} is seen both as a complement and a potential alternative to existing numerical techniques, across a wide range of research fields in science and engineering \cite{maoPhysicsinformedNeuralNetworks2020, buosoPersonalisingLeftventricularBiophysical2021, caiPhysicsInformedNeuralNetworks2021}.
+	TODO : à reformuler avec incertitude.
+	
+	\gls{pinn} represent a new paradigm in \gls{sciml}, capable of solving both direct and inverse problems for nonlinear \gls{edps} \cite{raissiPhysicsinformedNeuralNetworks2019}. By integrating underlying physical constraints into the architecture of a \gls{ffnn}, \gls{pinn}s can be trained as surrogate models with little to no labeled data for inferring solutions to \gls{edps} \cite{cuomoScientificMachineLearning2022}.
+	In the current literature, the implementation of \gls{pinn} is seen both as a complement and a potential alternative to existing numerical techniques, across a wide range of research fields in science and engineering \cite{maoPhysicsinformedNeuralNetworks2020, buosoPersonalisingLeftventricularBiophysical2021, caiPhysicsInformedNeuralNetworks2021}.
+	Moreover, some frameworks embed \gls{uq} by design \cite{yangBPINNsBayesianPhysicsInformed2021,zhangQuantifyingTotalUncertainty2018} which make \gls{pinn} a very interesting candidate for surrogate models in engineering, where robustness of computed solution consittute an important topic.
 	
 	\subsection*{Context}
 	
@@ -102,7 +114,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 			\item Numerical \acrshort{cfd} simulation (compressible gas and liquid with free surface, evaporation and thermal transport, extraction of wall forces),
 			\item \acrfull{pinn}, \acrfull{no} and \acrfull{pino}.
 			
-			\item Uncertainty and robustness of reduced models.
+			\item Uncertainty and robustness of reduced models through MC-dropout, ensembles,  \acrshort{bpinn}, heteroscedatic \acrshort{pinn}, or domain decomposition.
 		\end{itemize}
 		\item Propose a model selection strategy based on:
 		\begin{itemize}
@@ -166,6 +178,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 	Specifically, a direct contribution is expected regarding the modeling of the physical phenomenon:
 	\begin{itemize}
 		\item A reduced model for sloshing in micro-gravity: where the state of the art does not provide anything usable in an environment coupled with \acrshort{gnc} algorithms, unlike phases under acceleration.
+		\item Embeddable sloshing models for flight software: enabling the integration of physically accurate sloshing behavior directly into on-board flight codes for real-time simulation and control.
 		\item Initialization of pendulum models after an orbital phase: where the current state of knowledge forces us to randomly generate the initial state. The goal is to reduce such conservatism.
 		\item Implementation of models during the flip maneuver of reusable launchers: where the dynamics of the launcher may impact sloshing behavior, moving beyond the applicability domain of pendulum models.
 	\end{itemize}
@@ -175,7 +188,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 	
 	\subsection*{Novelty}
 	
-	While PINNs have been successfully applied to terrestrial free-surface flows and generic two-phase fluid benchmarks, no published work addresses propellant tank sloshing in microgravity or low-g launcher maneuvres, including cryogenic compressible two-phase physics and thermal/phase-change effects, with controller-ready surrogates that are SMP/ECSS-compliant.
+	While \gls{pinn}s have been successfully applied to terrestrial free-surface flows and generic two-phase fluid benchmarks, no published work addresses propellant tank sloshing in microgravity or low-g launcher maneuvres, including cryogenic compressible two-phase physics and thermal/phase-change effects, with controller-ready surrogates that are \acrshort{ecss}/\acrshort{smp}-compliant.
 	Existing aerospace-related work is either:
 	
 	\begin{itemize}
@@ -186,7 +199,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 	This PhD features a uniquely combination of technique and use case:
 	
 	\begin{itemize}
-		\item Technique: Advances PINN/PINO for nonlinear, multiphase PDEs capturing on-board propellant physics (Compressible gas–liquid interaction, Free-surface dynamics, Thermal transport and phase change, tank geometry and boundary conditions) and differentiability for MPC (??).
+		\item Technique: Advances \acrshort{pinn}/\acrshort{pino} for nonlinear, multiphase \acrshort{edps} capturing on-board propellant physics (Compressible gas–liquid interaction, Free-surface dynamics, Thermal transport and phase change, tank geometry and boundary conditions) and differentiability for \gls{mpc}.
 		
 		\item Use case: Space launcher tanks in micro-gravity/flip/transition phases where no analytical or reduced models are currently operational.
 	\end{itemize}
@@ -194,7 +207,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 	\subsection*{Maturity}
 	
 	
-	State of the art: PINNs are at TRL 2–3 in fluid mechanics; proven for simpler PDEs, non-cryogenic two-phase flows, and non-aerospace domains.
+	State of the art: \acrshort{pinn}s are at \acrshort{trl} 2–3 in fluid mechanics; proven for simpler \acrshort{pinn}s, non-cryogenic two-phase flows, and non-aerospace domains.
 	\\
 	
 	Gap: No application to aerospace tanks with cryogenic thermodynamics, no integration into industrial simulation environments, no control-loop embedding.
@@ -203,16 +216,16 @@ bibstyle=numeric,  % bibliography style alphabetic
 	PhD suitability:
 	
 	\begin{itemize}
-		\item CFD and analytical models for dataset generation are available from ESA/CNES/ONERA.
+		\item \acrshort{cfd} and analytical models for dataset generation are available from \acrshort{esa}/\acrshort{cnes}/\acrshort{onera}.
 		
-		\item PINN/PINO toolchains (PyTorch/TensorFlow, JAX, DeepXDE) are mature enough for immediate prototyping.
+		\item \acrshort{pinn}/\acrshort{pino} toolchains (PyTorch/TensorFlow, JAX, DeepXDE) are mature enough for immediate prototyping.
 		
-		\item SMP/ECSS interface specs are public and can be implemented alongside model development.
+		\item \acrshort{ecss}/\acrshort{smp} interface specifications are public and can be implemented alongside model development.
 		
 	\end{itemize}	
 	A 3–4 year research arc allows deepening physics complexity (phase change, boil-off), improving surrogate training stability, and performing closed-loop validation.
 	
-	Target TRL after PhD: 4–5 — validated in simulation with representative hardware/software in the loop, ready for extension to flight-representative testbeds.
+	Target \acrshort{trl} after PhD: 4–5 — validated in end-to-end simulation with representative hardware/software in the loop, ready for extension to flight-representative testbeds.
 	
 	
 	
