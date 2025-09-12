@@ -34,11 +34,12 @@
 \newacronym{mpc}{MPC}{Model Predictive Control}
 \newacronym{trl}{TRL}{Technology Readiness Level}
 \newacronym{uq}{UQ}{Uncertainty Quantification}
+\newacronym{vv}{V\&V}{Verification and Validation}
 
 \AfterPreamble{\hypersetup{
 		pdfauthor={Ludovic Andrieux},
 		pdftitle={PhD proposal},
-		pdfsubject={Multi-fidelity modeling of propellant sloshing in space launcher tanks through the hybridization of analytical models, CFD, and physics-informed neural networks.}
+		pdfsubject={Modeling of propellant sloshing in space vehicle tanks under micro-gravity or low-g maneuver through physics informed machine learning.}
 }}
 
 % Bibliography
@@ -81,11 +82,9 @@ bibstyle=numeric,  % bibliography style alphabetic
 	
 	\section*{PhD Project Description}
 	
-	TODO : à reformuler avec incertitude.
-	
 	\gls{pinn} represent a new paradigm in \gls{sciml}, capable of solving both direct and inverse problems for nonlinear \gls{edps} \cite{raissiPhysicsinformedNeuralNetworks2019}. By integrating underlying physical constraints into the architecture of a \gls{ffnn}, \gls{pinn}s can be trained as surrogate models with little to no labeled data for inferring solutions to \gls{edps} \cite{cuomoScientificMachineLearning2022}.
 	In the current literature, the implementation of \gls{pinn} is seen both as a complement and a potential alternative to existing numerical techniques, across a wide range of research fields in science and engineering \cite{maoPhysicsinformedNeuralNetworks2020, buosoPersonalisingLeftventricularBiophysical2021, caiPhysicsInformedNeuralNetworks2021}.
-	Moreover, some frameworks embed \gls{uq} by design \cite{yangBPINNsBayesianPhysicsInformed2021,zhangQuantifyingTotalUncertainty2018} which make \gls{pinn} a very interesting candidate for surrogate models in engineering, where robustness of computed solution consittute an important topic.
+	Moreover, some frameworks embed \gls{uq} by design \cite{yangBPINNsBayesianPhysicsInformed2021,zhangQuantifyingTotalUncertainty2018} which make \gls{pinn} a very interesting candidate for surrogate models in engineering, where robustness of computed solution constitute an important topic.
 	
 	\subsection*{Context}
 	
@@ -93,7 +92,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 	
 	\subsection*{Problem}
 	
-	In a numerical simulation context, especially for flight control validation and qualification, it is essential to have models that are both accurate, fast, and adaptable, capable of representing physical phenomena at different scales and under various flight conditions.
+	In a numerical simulation context, especially for flight control validation and qualification, it is essential to have models that are accurate, fast, and adaptable, capable of representing physical phenomena at different scales and under various flight conditions.
 	The current approaches struggle to provide a generic, fast, and reliable framework for modeling propellant sloshing during all flight phases. \acrshort{cfd} provides accurate but costly results, reduced models (pendulums, mass-spring) are effective during powered phases with relatively small sloshing angles (excluding the flip maneuver of the reusable launch vehicle), while \gls{pinn} offer a promising trade-off between accuracy and cost.
 	
 	\subsection*{Objectives}
@@ -139,7 +138,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 		
 		Special attention will be given to the preparation of the dataset, as the data-driven approach strongly relies on it.
 		
-		\item Development of full (\acrshort{cfd} base on previous modeling),  and surrogate (\acrshort{pinn} or \acrshort{piml}), models according to \acrshort{ecss}/\acrshort{smp} standards for integration into an industrial environment that ensures good portability across various simulation environments.
+		\item Development of full (\acrshort{cfd} base on previous modeling)  and surrogate (\acrshort{pinn} or \acrshort{piml}) models according to \acrshort{ecss}/\acrshort{smp} standards for integration into an industrial environment that ensures good portability across various simulation environments.
 		
 		\item Performance evaluation on the trade-off between accuracy (with uncertainty quantification) and speed through integration of models into a closed-loop digital simulator and development of recommendations for model selection based on usage.
 	\end{enumerate}
@@ -192,7 +191,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 	Existing aerospace-related work is either:
 	
 	\begin{itemize}
-		\item Not physics-informed (deep learning only, less explainable, no V\&V robustness)
+		\item Not physics-informed (deep learning only, less explainable, no \acrshort{vv} robustness)
 		\item Limited to simplified problems (no cryogenics, no spaceflight regimes)
 	\end{itemize}
 	
