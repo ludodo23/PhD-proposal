@@ -2,8 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
 \usetheme{Madrid}
-\title[Proposition de thèse]{Modélisation multi-fidélité des ballottements d’ergols}
-\subtitle{Hybridation de modèles analytiques, CFD et réseaux de neurones informés par la physique}
+\title[Proposition de thèse]{Modélisation des ballottements d’ergols dans les réservoirs de véhicule spatiaux.}
+\subtitle{Développement de modèles CFD et réseaux de neurones informés par la physique pour les conditions de micro-gravité ou faible facteur charge}
 \author{Ludovic Andrieux}
 \date{24 juin 2025}
 
@@ -13,7 +13,7 @@
 	
 	\begin{frame}{Objectifs de la thèse}
 		\begin{itemize}
-			\item Développer un cadre générique pour modéliser le comportement des ergols dans les réservoirs spatiaux.
+			\item Développer un cadre générique pour modéliser le comportement des ergols dans les réservoirs spatiaux en conditions de micro-gravité et faible facteur de charge.
 			\item Intégrer plusieurs niveaux de fidélité :
 			\begin{itemize}
 				\item Modèles analytiques (pendulaires, masse-ressort),
@@ -29,14 +29,15 @@
 		\textbf{Approche structurée en 3 volets :}
 		\begin{enumerate}
 			\item \textbf{Modélisation physique} : cas tests et données pour l’apprentissage.
-			\item \textbf{Développement multi-modèles} : CFD, réduits, PINN, hybrides.
+			\item \textbf{Développement multi-modèles} : CFD et PINN.
 			\item \textbf{Évaluation des performances} : benchmarks, stratégie de sélection.
 		\end{enumerate}
 		\vspace{0.5cm}
 		\textbf{Apports attendus :}
 		\begin{itemize}
 			\item Meilleure modélisation en micro-gravité et phases de retournement.
-			\item Réduction des conservatismes dans l’initialisation des modèles.
+			\item Modèle embarquable sur du temps réels.
+			\item Réduction des conservatismes dans l’initialisation des modèles pendulaires.
 			\item Gains opérationnels grâce à l’intégration dans des simulateurs industriels.
 		\end{itemize}
 	\end{frame}
