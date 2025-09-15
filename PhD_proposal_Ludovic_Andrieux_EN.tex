@@ -17,6 +17,7 @@
 \newacronym{edps}{PDEs}{Partial Differential Equations}
 \newacronym{gnc}{GNC}{Guidance, Navigation and Control}
 \newacronym{pinn}{PINN}{Physics-Informed Neural Network}
+\newacronym{pinns}{PINNs}{Physics-Informed Neural Networks}
 \newacronym{bpinn}{B-PINN}{Bayesian Physics-Informed Neural Network}
 \newacronym{bnn}{BNN}{Bayesian Neural Network}
 \newacronym{pino}{PINO}{Physics-Informed Neural Operator}
@@ -82,9 +83,9 @@ bibstyle=numeric,  % bibliography style alphabetic
 	
 	\section*{PhD Project Description}
 	
-	\gls{pinn} represent a new paradigm in \gls{sciml}, capable of solving both direct and inverse problems for nonlinear \gls{edps} \cite{raissiPhysicsinformedNeuralNetworks2019}. By integrating underlying physical constraints into the architecture of a \gls{ffnn}, \gls{pinn}s can be trained as surrogate models with little to no labeled data for inferring solutions to \gls{edps} \cite{cuomoScientificMachineLearning2022}.
-	In the current literature, the implementation of \gls{pinn} is seen both as a complement and a potential alternative to existing numerical techniques, across a wide range of research fields in science and engineering \cite{maoPhysicsinformedNeuralNetworks2020, buosoPersonalisingLeftventricularBiophysical2021, caiPhysicsInformedNeuralNetworks2021}.
-	Moreover, some frameworks embed \gls{uq} by design \cite{yangBPINNsBayesianPhysicsInformed2021,zhangQuantifyingTotalUncertainty2018} which make \gls{pinn} a very interesting candidate for surrogate models in engineering, where robustness of computed solution constitute an important topic.
+	\gls{pinns} represent a new paradigm in \gls{sciml}, capable of solving both direct and inverse problems for nonlinear \gls{edps} \cite{raissiPhysicsinformedNeuralNetworks2019}. By integrating underlying physical constraints into the architecture of a \gls{ffnn}, \gls{pinns} can be trained as surrogate models with little to no labeled data for inferring solutions to \gls{edps} \cite{cuomoScientificMachineLearning2022}.
+	In the current literature, the implementation of \gls{pinns} is seen both as a complement and a potential alternative to existing numerical techniques, across a wide range of research fields in science and engineering \cite{maoPhysicsinformedNeuralNetworks2020, buosoPersonalisingLeftventricularBiophysical2021, caiPhysicsInformedNeuralNetworks2021}.
+	Moreover, some frameworks embed \gls{uq} by design \cite{yangBPINNsBayesianPhysicsInformed2021,zhangQuantifyingTotalUncertainty2018} which make \acrshort{pinn} a very interesting candidate for surrogate models in engineering, where robustness of computed solution constitutes an important topic.
 	
 	\subsection*{Context}
 	
@@ -93,7 +94,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 	\subsection*{Problem}
 	
 	In a numerical simulation context, especially for flight control validation and qualification, it is essential to have models that are accurate, fast, and adaptable, capable of representing physical phenomena at different scales and under various flight conditions.
-	The current approaches struggle to provide a generic, fast, and reliable framework for modeling propellant sloshing during all flight phases. \acrshort{cfd} provides accurate but costly results, reduced models (pendulums, mass-spring) are effective during powered phases with relatively small sloshing angles (excluding the flip maneuver of the reusable launch vehicle), while \gls{pinn} offer a promising trade-off between accuracy and cost.
+	The current approaches struggle to provide a generic, fast, and reliable framework for modeling propellant sloshing during all flight phases. \acrshort{cfd} provides accurate but costly results, reduced models (pendulums, mass-spring) are effective during powered phases with relatively small sloshing angles (excluding the flip maneuver of the reusable launch vehicle), while \acrshort{pinn} offer a promising trade-off between accuracy and cost.
 	
 	\subsection*{Objectives}
 	
@@ -104,7 +105,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 		\item Develop a modular C++ software architecture:
 		\begin{itemize}
 			\item \acrshort{cfd} models (for dataset generation and end to end closed-loop reference simulation),
-			\item Integration of \gls{pinn}/\acrshort{piml} models,
+			\item Integration of \acrshort{pinn}/\acrshort{piml} models,
 			\item Interoperability with \acrshort{ecss}/\acrshort{smp} standards and pre-existing pendulum and mass-spring models.
 		\end{itemize}
 		\item Explore, compare, and synthesize sloshing modeling methods:
@@ -187,7 +188,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 	
 	\subsection*{Novelty}
 	
-	While \gls{pinn}s have been successfully applied to terrestrial free-surface flows and generic two-phase fluid benchmarks, no published work addresses propellant tank sloshing in microgravity or low-g launcher maneuvres, including cryogenic compressible two-phase physics and thermal/phase-change effects, with controller-ready surrogates that are \acrshort{ecss}/\acrshort{smp}-compliant.
+	While \acrshort{pinns} have been successfully applied to terrestrial free-surface flows and generic two-phase fluid benchmarks, no published work addresses propellant tank sloshing in microgravity or low-g launcher maneuvres, including cryogenic compressible two-phase physics and thermal/phase-change effects, with controller-ready surrogates that are \acrshort{ecss}/\acrshort{smp}-compliant.
 	Existing aerospace-related work is either:
 	
 	\begin{itemize}
@@ -206,7 +207,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 	\subsection*{Maturity}
 	
 	
-	State of the art: \acrshort{pinn}s are at \acrshort{trl} 2–3 in fluid mechanics; proven for simpler \acrshort{pinn}s, non-cryogenic two-phase flows, and non-aerospace domains.
+	State of the art: \acrshort{pinns} are at \acrshort{trl} 2–3 in fluid mechanics; proven for simpler \acrshort{pinns}, non-cryogenic two-phase flows, and non-aerospace domains.
 	\\
 	
 	Gap: No application to aerospace tanks with cryogenic thermodynamics, no integration into industrial simulation environments, no control-loop embedding.
