@@ -13,8 +13,11 @@
 \makeglossaries
 
 \newacronym{cfd}{CFD}{Computational Fluid Dynamics}
-\newacronym{edp}{EDP}{Equation aux Dérivées Partielles}
-\newacronym{edps}{EDPs}{Equations aux Dérivées Partielles}
+\newacronym[
+plural=EDPs,
+longplural=Équations aux Dérivées Partielles,
+firstplural=Équations aux Dérivées Partielles (EDPs)
+]{edp}{EDP}{Équation aux Dérivées Partielles}
 \newacronym{gnc}{GNC}{Guidance, Navigation and Control}
 \newacronym{pinn}{PINN}{Physics-Informed Neural Network}
 \newacronym{bpinn}{B-PINN}{Bayesian Physics-Informed Neural Network}
@@ -65,7 +68,7 @@ bibstyle=numeric,  % style de bibliographie alphabétique
 	\maketitle
 	
 	\begin{tcolorbox}[colback=gray!0, colframe=black, sharp corners, boxrule=0.5pt]
-	Modélisation des ballottements d’ergols dans les réservoirs de véhicule spatiaux en conditions de micro-gravité ou sous faible facteur de charge par apprentissage automatique informé par la physique.
+	Modélisation des ballottements d’ergols dans les réservoirs de véhicules spatiaux en conditions de micro-gravité ou sous faible facteur de charge par apprentissage automatique informé par la physique.
 	\end{tcolorbox}
 	
 	\section*{Mots-clés}
@@ -199,7 +202,7 @@ bibstyle=numeric,  % style de bibliographie alphabétique
 	Cette thèse présente une combinaison unique de technique et de cas d’utilisation :
 	
 	\begin{itemize}
-		\item Technique : Fait progresser l’état de l’art \acrshort{pinn}/\acrshort{pino} pour la capture d’\acrshort{edps} non linéaires multiphasiques décrivant la physique des ergols embarqués (interactions gaz–liquide compressibles, dynamique de surface libre, transport thermique et changement de phase, géométrie des réservoirs et conditions aux limites), avec des propriétés de différentiabilité exploitables pour le \gls{mpc}.
+		\item Technique : Fait progresser l’état de l’art \acrshort{pinn}/\acrshort{pino} pour la capture d’\acrshortpl{edp} non linéaires multiphasiques décrivant la physique des ergols embarqués (interactions gaz–liquide compressibles, dynamique de surface libre, transport thermique et changement de phase, géométrie des réservoirs et conditions aux limites), avec des propriétés de différentiabilité exploitables pour le \gls{mpc}.
 		
 		\item Cas d’utilisation : Réservoirs de véhicules spatiaux pendant les phases de micro-gravité, de renversement ou de transition, pour lesquels aucun modèle analytique ou réduit n’est actuellement opérationnel.
 	\end{itemize}
