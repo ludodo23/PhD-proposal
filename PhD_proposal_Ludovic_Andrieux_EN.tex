@@ -14,10 +14,8 @@
 
 \newacronym{cfd}{CFD}{Computational Fluid Dynamics}
 \newacronym{edp}{PDE}{Partial Differential Equation}
-\newacronym{edps}{PDEs}{Partial Differential Equations}
 \newacronym{gnc}{GNC}{Guidance, Navigation and Control}
 \newacronym{pinn}{PINN}{Physics-Informed Neural Network}
-\newacronym{pinns}{PINNs}{Physics-Informed Neural Networks}
 \newacronym{bpinn}{B-PINN}{Bayesian Physics-Informed Neural Network}
 \newacronym{bnn}{BNN}{Bayesian Neural Network}
 \newacronym{pino}{PINO}{Physics-Informed Neural Operator}
@@ -83,8 +81,8 @@ bibstyle=numeric,  % bibliography style alphabetic
 	
 	\section*{PhD Project Description}
 	
-	\gls{pinns} represent a new paradigm in \gls{sciml}, capable of solving both direct and inverse problems for nonlinear \gls{edps} \cite{raissiPhysicsinformedNeuralNetworks2019}. By integrating underlying physical constraints into the architecture of a \gls{ffnn}, \gls{pinns} can be trained as surrogate models with little to no labeled data for inferring solutions to \gls{edps} \cite{cuomoScientificMachineLearning2022}.
-	In the current literature, the implementation of \gls{pinns} is seen both as a complement and a potential alternative to existing numerical techniques, across a wide range of research fields in science and engineering \cite{maoPhysicsinformedNeuralNetworks2020, buosoPersonalisingLeftventricularBiophysical2021, caiPhysicsInformedNeuralNetworks2021}.
+	\glspl{pinn} represent a new paradigm in \gls{sciml}, capable of solving both direct and inverse problems for nonlinear \glspl{edp} \cite{raissiPhysicsinformedNeuralNetworks2019}. By integrating underlying physical constraints into the architecture of a \gls{ffnn}, \glspl{pinn} can be trained as surrogate models with little to no labeled data for inferring solutions to \glspl{edp} \cite{cuomoScientificMachineLearning2022}.
+	In the current literature, the implementation of \glspl{pinn} is seen both as a complement and a potential alternative to existing numerical techniques, across a wide range of research fields in science and engineering \cite{maoPhysicsinformedNeuralNetworks2020, buosoPersonalisingLeftventricularBiophysical2021, caiPhysicsInformedNeuralNetworks2021}.
 	Moreover, some frameworks embed \gls{uq} by design \cite{yangBPINNsBayesianPhysicsInformed2021,zhangQuantifyingTotalUncertainty2018} which make \acrshort{pinn} a very interesting candidate for surrogate models in engineering, where robustness of computed solution constitutes an important topic.
 	
 	\subsection*{Context}
@@ -188,26 +186,23 @@ bibstyle=numeric,  % bibliography style alphabetic
 	
 	\subsection*{Novelty}
 	
-	While \acrshort{pinns} have been successfully applied to terrestrial free-surface flows and generic two-phase fluid benchmarks, no published work addresses propellant tank sloshing in microgravity or low-g launcher maneuvres, including cryogenic compressible two-phase physics and thermal/phase-change effects, with controller-ready surrogates that are \acrshort{ecss}/\acrshort{smp}-compliant.
-	Existing aerospace-related work is either:
+	While \acrshortpl{pinn} have been successfully applied to terrestrial free-surface flows and generic two-phase fluid benchmarks, no published work addresses propellant tank sloshing in microgravity or low-g launcher maneuvres, including cryogenic compressible two-phase physics and thermal/phase-change effects, with controller-ready surrogates that are \acrshort{ecss}/\acrshort{smp}-compliant.
+	Existing aerospace-related work is either not physics-informed (using deep learning only, less explainable, and lacking the robustness required by \acrshort{vv} processes) or restricted to simplified problems (excluding cryogenics and spaceflight conditions such as microgravity).
+	
+	
+	This PhD presents a unique combination of technique and use case:
 	
 	\begin{itemize}
-		\item Not physics-informed (deep learning only, less explainable, no \acrshort{vv} robustness)
-		\item Limited to simplified problems (no cryogenics, no spaceflight regimes)
-	\end{itemize}
-	
-	This PhD features a uniquely combination of technique and use case:
-	
-	\begin{itemize}
-		\item Technique: Advances \acrshort{pinn}/\acrshort{pino} for nonlinear, multiphase \acrshort{edps} capturing on-board propellant physics (Compressible gas–liquid interaction, Free-surface dynamics, Thermal transport and phase change, tank geometry and boundary conditions) and differentiability for \gls{mpc}.
+		\item Technique: Advances \acrshort{pinn}/\acrshort{pino} for nonlinear, multiphase \acrshortpl{edp} capturing on-board propellant physics (compressible gas–liquid interactions, free-surface dynamics, thermal transport and phase change, tank geometry and boundary conditions), with differentiability properties that can be used for \gls{mpc}.
 		
-		\item Use case: Space launcher tanks in micro-gravity/flip/transition phases where no analytical or reduced models are currently operational.
+		\item Use case: Space launcher tanks during microgravity, flip, or transition phases, for which no analytical or reduced models are currently operational.
 	\end{itemize}
+	
 	
 	\subsection*{Maturity}
 	
 	
-	State of the art: \acrshort{pinns} are at \acrshort{trl} 2–3 in fluid mechanics; proven for simpler \acrshort{pinns}, non-cryogenic two-phase flows, and non-aerospace domains.
+	State of the art: \acrshortpl{pinn} are at \acrshort{trl} 2–3 in fluid mechanics; proven for simpler \acrshortpl{pinn}, non-cryogenic two-phase flows, and non-aerospace domains.
 	\\
 	
 	Gap: No application to aerospace tanks with cryogenic thermodynamics, no integration into industrial simulation environments, no control-loop embedding.
@@ -225,7 +220,7 @@ bibstyle=numeric,  % bibliography style alphabetic
 	\end{itemize}	
 	A 3–4 year research arc allows deepening physics complexity (phase change, boil-off), improving surrogate training stability, and performing closed-loop validation.
 	
-	Target \acrshort{trl} after PhD: 4–5 — validated in end-to-end simulation with representative hardware/software in the loop, ready for extension to flight-representative testbeds.
+	\textbf{Target \acrshort{trl} after PhD: 4–5} — \acrshort{pinn} validated in end-to-end simulation with representative software in closed-loop, ready for extension to flight-representative testbeds.
 	
 	
 	
